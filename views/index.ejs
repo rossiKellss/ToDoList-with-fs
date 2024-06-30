@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./stylesheets/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Notes</title>
+  </head>
+  <body class="bg-zinc-900 h-full w-full">
+    <div class="form">
+      <form
+        action="/create"
+        method="post"
+        class="text-white px-4 py-2 space-y-2"
+      >
+        <input
+          type="text"
+          id="title"
+          placeholder="Enter the title"
+          name="title"
+          class="block bg-zinc-800 w-full p-2 outline-none"
+        />
+        <textarea
+          name="desc"
+          id=""
+          cols="30"
+          rows="10"
+          class="block bg-zinc-800 w-full p-2 outline-none resize-none"
+          placeholder="Description"
+        ></textarea>
+        <input
+          type="submit"
+          placeholder="Submit"
+          class="px-3 py-2 bg-blue-600 cursor-pointer rounded-sm"
+        />
+      </form>
+    </div>
+    <div class="cards p-4 flex flex-wrap gap-10">
+      <% if(files.length>0){%> <%files.forEach(element => {%>
+      <div class="card w-72 px-3 py-2 bg-zinc-800 text-white">
+        <h2 class="text-xl"><%=element%></h2>
+        <div class="flex gap-4">
+          <a
+            href="/files/<%=element%>"
+            class="text-blue-500 inline-block pointer"
+            >Read more</a
+          >
+          
+        </div>
+      </div>
+
+      <%});%> <%}else{%>
+      <h3 class="text-zinc-500">No notes created.</h3>
+
+      <% } %>
+    </div>
+  </body>
+</html>
